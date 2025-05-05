@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuadre General</title>
+  <link rel="stylesheet" href="cuadre-general.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+
+  <h1>Cuadre General del Día</h1>
+
+  <section class="filtro">
+    <h2>Filtrar por Fecha</h2>
+    <input type="date" id="fecha-filtro" />
+    <button id="btn-filtrar">Aplicar Filtro</button>
+    <button id="btn-pdf">Exportar a PDF</button>
+    <button id="btn-excel">Exportar a Excel</button>
+    <button id="borrarHistorialFacturacion">🗑️ Borrar Historial de Facturación</button>
+
+  </section>
+
+  <div class="resumen" id="resumen-ingresos">
+    <h2>Ingresos</h2>
+    <ul id="lista-ingresos"></ul>
+    <p><strong>Total Ingresos: </strong><span id="total-ingresos">$0.00</span></p>
+  </div>
+
+  <div class="resumen" id="resumen-gastos">
+    <h2>Gastos</h2>
+    <ul id="lista-gastos"></ul>
+    <p><strong>Total Gastos: </strong><span id="total-gastos">$0.00</span></p>
+  </div>
+
+  <div class="resumen" id="resumen-facturas">
+    <h2>Facturación</h2>
+    <ul id="lista-facturas"></ul>
+    <p><strong>Total Facturación: </strong><span id="total-facturacion">$0.00</span></p>
+  </div>
+
+  <hr>
+  <div class="total-final">
+    <h2>Resumen Final</h2>
+    <p><strong>Ingresos + Facturación - Gastos = </strong><span id="resumen-final">$0.00</span></p>
+  </div>
+
+  <script src="cuadre-general.js"></script>
+</body>
+</html>

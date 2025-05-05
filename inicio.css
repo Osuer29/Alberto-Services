@@ -1,0 +1,121 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #ff9900;
+}
+
+header .logout {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+header .logout:hover {
+    background-color: #cc0000;
+}
+
+/* Sección de accesos rápidos */
+.accesos {
+    margin: 20px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.accesos h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.botones .btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 200px; /* Asegura que los botones tengan un tamaño uniforme */
+    text-align: center;
+}
+
+.botones .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Sección de notificaciones */
+.notificaciones {
+    margin: 20px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.notificaciones h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.notificaciones ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notificaciones ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}

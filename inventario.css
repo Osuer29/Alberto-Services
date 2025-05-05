@@ -1,0 +1,167 @@
+/* Reset y tipografía base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background: #f5f7fa;
+    color: #333;
+    padding: 20px;
+  }
+  
+  /* Encabezado */
+  header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  
+  /* Contenedor principal */
+  .contenedor {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  /* Formulario */
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  form .grupo {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  
+  form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: 0.2s ease-in-out;
+  }
+  
+  form input:focus {
+    border-color: #4a90e2;
+    outline: none;
+  }
+  
+  form button {
+    padding: 10px 20px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  form button:hover {
+    background: #357ab8;
+  }
+  
+  /* Buscador */
+  .buscador {
+    margin-bottom: 15px;
+  }
+  
+  .buscador input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Tabla */
+  .tabla {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+  }
+  
+  thead {
+    background: #4a90e2;
+    color: white;
+  }
+  
+  thead th {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  tbody tr:hover {
+    background: #f1f5fb;
+  }
+  
+  button.editar, button.eliminar {
+    padding: 5px 10px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button.editar {
+    background-color: #ffa500;
+    color: white;
+  }
+  
+  button.eliminar {
+    background-color: #ff4d4f;
+    color: white;
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    form .grupo {
+      grid-template-columns: 1fr;
+    }
+  
+    thead {
+      display: none;
+    }
+  
+    table, tbody, tr, td {
+      display: block;
+      width: 100%;
+    }
+  
+    tr {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+    }
+  
+    td {
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      color: #555;
+    }
+  }
+  

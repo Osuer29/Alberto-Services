@@ -1,0 +1,57 @@
+<!-- gastos.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastos - Tienda de Celulares</title>
+  <link rel="stylesheet" href="gastos.css">
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+  <header>
+    <h1>Registro de Gastos</h1>
+  </header>
+
+  <section class="form-section">
+    <h2>Agregar Gasto</h2>
+    <form id="form-gasto">
+      <label for="descripcion">Descripción:</label>
+      <input type="text" id="descripcion" name="descripcion" required>
+
+      <label for="monto">Monto:</label>
+      <input type="number" id="monto" name="monto" required>
+
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" name="fecha" required>
+
+      <button type="submit">Agregar Gasto</button>
+    </form>
+  </section>
+
+  <section class="gastos-lista">
+    <h2>Lista de Gastos</h2>
+    <table id="tabla-gastos">
+      <thead>
+        <tr>
+          <th>Descripción</th>
+          <th>Monto</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se mostrarán los registros de los gastos -->
+      </tbody>
+    </table>
+  </section>
+
+  <section class="filtro">
+    <h2>Filtrar por Fecha</h2>
+    <input type="date" id="filtro-fecha" name="filtro-fecha">
+    <button id="filtrar">Filtrar</button>
+  </section>
+
+  <script src="gastos.js"></script>
+</body>
+</html>

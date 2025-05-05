@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventario - Sistema Celulares</title>
+  <link rel="stylesheet" href="inventario.css" />
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+
+  <header>
+    <h1>Inventario de Artículos</h1>
+  </header>
+
+  <section class="contenedor">
+    <!-- FORMULARIO -->
+    <form id="formularioInventario">
+      <div class="grupo">
+        <input type="text" name="nombre" placeholder="Nombre del artículo *" required />
+        <input type="number" name="costo" placeholder="Costo *" required />
+        <input type="number" name="precio" placeholder="Precio *" required />
+        <input type="number" name="precioMayor" placeholder="Precio x Mayor" />
+        <input type="text" name="modelo" placeholder="Modelo" />
+        <input type="text" name="marca" placeholder="Marca" />
+        <input type="text" name="imei" placeholder="IMEI" />
+        <input type="text" name="descripcion" placeholder="Descripción" />
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" required>
+
+      </div>
+      <button type="submit" name="btnGuardar">Agregar</button>
+      <button type="button" onclick="limpiarFormulario()">Limpiar</button>
+    </form>
+
+    <!-- BUSCADOR -->
+    <div class="buscador">
+      <input type="text" id="buscarInventario" placeholder="Buscar artículo por nombre, marca o modelo..." />
+    </div>
+
+    <!-- TABLA -->
+    <div class="tabla">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Precio</th>
+            <th>Mayor</th>
+            <th>IMEI</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tablaInventario"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <script src="inventario.js"></script>
+</body>
+</html>

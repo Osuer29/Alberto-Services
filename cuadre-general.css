@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+}
+
+.filtro {
+  margin: 20px 0;
+  background: rgb(117, 184, 240);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.resumen {
+  background:  rgb(117, 184, 240);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.total-final {
+  background: #327bc4;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1.2em;
+}

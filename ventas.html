@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ventas - Sistema</title>
+  <link rel="stylesheet" href="ventas.css" />
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+  <header>
+    <h1>Módulo de Ventas</h1>
+  </header>
+
+  <div class="contenedor">
+    <section class="formulario-venta">
+      <h2>Registrar Venta</h2>
+      <form id="formVenta">
+        <select id="tipoVenta" required>
+          <option value="">Tipo de venta</option>
+          <option value="articulo">Artículo de Inventario</option>
+          <option value="reparacion">Reparación Lista</option>
+          <option value="servicio">Servicio</option>
+        </select>
+        
+        <div id="detalleVenta"></div>
+
+        <input type="text" id="cliente" placeholder="Nombre del cliente" required />
+        <input type="number" id="total" placeholder="Total a cobrar" required />
+
+        <button type="submit">Facturar</button>
+      </form>
+    </section>
+
+    <section class="busqueda">
+      <input type="text" id="buscadorVentas" placeholder="Buscar por cliente o tipo..." />
+    </section>
+
+    <section class="lista-ventas">
+      <h2>Historial de Ventas</h2>
+      <div class="tabla">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Tipo</th>
+              <th>Cliente</th>
+              <th>Total</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="ventasRegistradas"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="ventas.js"></script>
+</body>
+</html>

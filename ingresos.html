@@ -1,0 +1,57 @@
+<!-- ingresos.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingresos - Tienda de Celulares</title>
+  <link rel="stylesheet" href="ingresos.css">
+  <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+  <header>
+    <h1>Registro de Ingresos</h1>
+  </header>
+
+  <section class="form-section">
+    <h2>Agregar Ingreso</h2>
+    <form id="form-ingreso">
+      <label for="descripcion-ingreso">Descripción:</label>
+      <input type="text" id="descripcion-ingreso" name="descripcion-ingreso" required>
+
+      <label for="monto-ingreso">Monto:</label>
+      <input type="number" id="monto-ingreso" name="monto-ingreso" required>
+
+      <label for="fecha-ingreso">Fecha:</label>
+      <input type="date" id="fecha-ingreso" name="fecha-ingreso" required>
+
+      <button type="submit">Agregar Ingreso</button>
+    </form>
+  </section>
+
+  <section class="ingresos-lista">
+    <h2>Lista de Ingresos</h2>
+    <table id="tabla-ingresos">
+      <thead>
+        <tr>
+          <th>Descripción</th>
+          <th>Monto</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se mostrarán los registros de los ingresos -->
+      </tbody>
+    </table>
+  </section>
+
+  <section class="filtro">
+    <h2>Filtrar por Fecha</h2>
+    <input type="date" id="filtro-fecha-ingreso" name="filtro-fecha-ingreso">
+    <button id="filtrar-ingreso">Filtrar</button>
+  </section>
+
+  <script src="ingresos.js"></script>
+</body>
+</html>
