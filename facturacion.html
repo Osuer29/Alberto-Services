@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Facturación</title>
-  <link rel="stylesheet" href="facturacion.css">
+  <link rel="stylesheet" href="facturacion.css" />
+  <link rel="icon" href="logo.png" type="image/png" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="facturas.js"></script> <!-- tu archivo JS modificado -->
-  <link rel="icon" href="logo.png" type="image/png">
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-
   <header>
     <h1>Facturación</h1>
     <nav>
@@ -27,50 +25,66 @@
 
     <div>
       <label for="producto">Selecciona un Producto</label>
-      <select id="producto">
-        <!-- Aquí se agregarán dinámicamente los productos desde el inventario -->
-      </select>
+      <select id="producto"></select>
       <button id="agregarProductoBtn">Agregar Producto</button>
     </div>
 
     <div>
       <label for="reparacion">Selecciona Reparación</label>
-      <select id="reparacion">
-        <!-- Aquí se agregarán dinámicamente las reparaciones disponibles -->
-      </select>
+      <select id="reparacion"></select>
       <button id="agregarReparacionBtn">Agregar Reparación</button>
     </div>
-    
-    <hr>
+
+    <hr />
     <h3>Servicios</h3>
     <form id="formServicio">
-      <input type="text" id="servicioCliente" placeholder="Nombre del cliente" required>
-      <input type="text" id="servicioDescripcion" placeholder="Descripción del servicio" required>
-      <input type="number" id="servicioPrecio" placeholder="Precio" required>
+      <input type="text" id="servicioCliente" placeholder="Nombre del cliente" required />
+      <input type="text" id="servicioDescripcion" placeholder="Descripción del servicio" required />
+      <input type="number" id="servicioPrecio" placeholder="Precio" required />
       <button type="submit">Agregar Servicio</button>
     </form>
-    
 
     <div>
-      <h3>Productos y Reparaciones Seleccionados:</h3>
-      <ul id="productosSeleccionados">
-        <!-- Aquí se listarán los productos y reparaciones seleccionados -->
-      </ul>
-    </div>
-
-    <div>
-      <p><strong>Total:</strong> $<span id="totalFactura">0.00</span></p>
+      <h3>Items Seleccionados:</h3>
+      <ul id="productosSeleccionados"></ul>
     </div>
 
     <button id="generarFacturaBtn">Generar Factura</button>
-    <button id="vaciarFacturaBtn">Vaciar Todo</button>
 
+    
+    <div>
+      <p><strong>Total:</strong> $<span id="totalFactura">0.00</span></p>
+      <button id="vaciarFacturaBtn">Vaciar Todo</button>
+    
+    </div>
+
+    <hr />
+    <h2>Historial de Facturas</h2>
+    <ul id="listaFacturas"></ul>
+
+    <div id="facturaVisual" style="width: 800px; padding: 20px; background: #fff; color: #000; font-family: Arial; border: 1px solid #ccc;">
+      <img src="logo.png" alt="Logo" style="height: 60px; display: block; margin-bottom: 5px;" />
+      <h2 style="text-align: center;">Factura</h2>
+      <div id="facturaClienteInfo">
+        <p class="cliente">Cliente: <span id="facturaCliente">Nombre del cliente</span></p>
+        <p class="fecha">Fecha: <span id="facturaFecha">DD/MM/AAAA</span></p>
+      </div>
+      <table id="tablaItemsFactura">
+        <thead>
+          <tr><th>Descripción</th><th>Precio</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="facturaTotal">
+        <p>Total: $<span id="facturaTotalTexto">0.00</span></p>
+      </div>
+      <div id="facturaFooter">
+        <p>Gracias por tu compra. ¡Te esperamos pronto!</p>
+        <p>Todos los derechos reservados.</p>
+      </div>
+    </div>
   </section>
 
   <script src="facturacion.js"></script>
-  <script src="facturacion_ticket.js"></script>
-  <h2>Historial de Facturas</h2>
-<ul id="listaFacturas"></ul>
-
 </body>
 </html>

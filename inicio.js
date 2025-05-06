@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const registrarIngresoBtn = document.querySelector('.btn:nth-child(6)');
     const verCuadreBtn = document.querySelector('.btn:nth-child(7)');
 
+
+    
     // Definir acciones para cada botón
     nuevoProductoBtn.addEventListener('click', function () {
         window.location.href = 'inventario.html'; // Redirige al módulo de inventario

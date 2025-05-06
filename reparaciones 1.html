@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo Reparaciones</title>
+  <link rel="stylesheet" href="reparaciones.css" />
+  <link rel="icon" href="logo.png" type="image/png" />
+</head>
+<body>
+  <div class="container">
+    <h1>Módulo de Reparaciones</h1>
+
+    <!-- Formulario para nueva reparación -->
+    <section class="formulario-reparacion">
+      <h2>Agregar Reparación</h2>
+      <form id="formReparacion">
+        <input type="text" id="cliente" placeholder="Nombre del Cliente" required />
+        <input type="text" id="telefono" placeholder="Teléfono del Cliente" />
+        <input type="text" id="equipo" placeholder="Equipo (Ej. iPhone 13)" required />
+        <input type="text" id="falla" placeholder="Descripción de la Falla" required />
+        <input type="number" id="abono" placeholder="Abono Inicial (opcional)" />
+        <button type="submit">Guardar Reparación</button>
+        <input type="text" id="buscadorReparaciones" placeholder="Buscar equipo, cliente o ID..." />
+      </form>
+    </section>
+
+    <!-- Lista de reparaciones activas -->
+    <section class="lista-reparaciones">
+      <h2>Reparaciones en Taller</h2>
+      <div id="listaReparaciones"></div>
+    </section>
+  </div>
+
+  <!-- Select externo para pruebas (opcional) -->
+  <select id="reparacionSelect" style="display:none;"></select>
+
+  <!-- Modal para agregar productos del inventario -->
+  <div id="modalTaller" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Agregar Producto del Inventario</h3>
+      <form id="formTaller">
+        <label for="productoInventarioSelect">Producto:</label>
+        <select id="productoInventarioSelect" required>
+          <option value="">Seleccione un producto</option>
+        </select>
+        <label for="costoProducto">Costo aplicado:</label>
+        <input type="number" id="costoProducto" placeholder="Costo del producto" min="0.01" step="0.01" required />
+        <button type="submit">Agregar a Reparación</button>
+      </form>
+      <div id="productosAgregados"></div>
+    </div>
+  </div>
+
+  <!-- Modal de Edición -->
+  <div id="modalEditar" class="modal">
+    <div class="modal-content">
+      <span class="close-editar">&times;</span>
+      <h3>Editar Reparación</h3>
+      <form id="formEditar">
+        <input type="text" id="editCliente" placeholder="Cliente" required />
+        <input type="text" id="editTelefono" placeholder="Teléfono" />
+        <input type="text" id="editEquipo" placeholder="Equipo" required />
+        <input type="text" id="editFalla" placeholder="Falla" required />
+        <input type="number" id="editAbono" placeholder="Abono" />
+        <button type="submit">Guardar Cambios</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="reparaciones.js"></script>
+</body>
+</html>

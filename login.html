@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Alberto Services</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <h2>Iniciar Sesión</h2>
+
+      <label for="usuario">Usuario</label>
+      <input type="text" id="usuario" placeholder="admin o caja" />
+
+      <label for="contraseña">Contraseña</label>
+      <input type="password" id="contraseña" placeholder="Contraseña" />
+
+      <button onclick="login()">Entrar</button>
+      <p id="error" style="color: red; margin-top: 10px;"></p>
+    </div>
+  </div>
+
+  <script>
+    const usuarios = {
+      admin: {
+        contraseña: 'admin123',
+        rol: 'admin'
+      },
+      caja: {
+        contraseña: '1234',
+        rol: 'caja'
+      }
+    };
+  
+    function login() {
+      const usuario = document.getElementById('usuario').value.trim().toLowerCase(); // fuerza minúsculas
+      const contraseña = document.getElementById('contraseña').value.trim();
+      const error = document.getElementById('error');
+  
+      if (usuarios[usuario] && usuarios[usuario].contraseña === contraseña) {
+        localStorage.setItem('usuarioAutenticado', 'true');  // <- esto es clave
+        localStorage.setItem('rol', usuarios[usuario].rol);
+        window.location.href = 'index.html';
+      } else {
+        error.textContent = 'Usuario o contraseña incorrectos.';
+      }
+    }
+  </script>
+  
+</body>
+</html>

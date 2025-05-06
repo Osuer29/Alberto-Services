@@ -1,0 +1,16 @@
+{
+    "name": "mi-sistema-api",
+    "version": "1.0.0",
+    "description": "API para sistema de tienda de celulares",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "cors": "^2.8.5",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "mysql2": "^3.2.0"
+    }
+  }
+  

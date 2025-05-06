@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('total-ingresos').textContent = `$${totalIngresos.toFixed(2)}`;
     document.getElementById('total-gastos').textContent = `$${totalGastos.toFixed(2)}`;
     document.getElementById('total-facturacion').textContent = `$${totalFacturacion.toFixed(2)}`;
+    document.getElementById('total-ganancias').textContent = `$${totalGanancias.toFixed(2)}`;
     document.getElementById('resumen-final').textContent = `$${resumenFinal.toFixed(2)}`;
 
     datosResumen = {
@@ -103,6 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
       doc.text(`- Factura ${d.id}: $${parseFloat(d.total).toFixed(2)}`, 18, y); y += 6;
     });
     doc.text(`Total Facturación: $${datosResumen.totalFacturacion.toFixed(2)}`, 18, y); y += 10;
+
+    doc.text('GANANCIAS:', 14, y); y += 8;
+    datosResumen.ganancias.forEach(d => {
+      doc.text(`- Ganancias ${d.id}: $${parseFloat(d.total).toFixed(2)}`, 18, y); y += 6;
+    });
+    doc.text(`Total Ganancias: $${datosResumen.totalGanancias.toFixed(2)}`, 18, y); y += 10;
+
 
     doc.setFontSize(14);
     doc.text(`Resumen Final: $${datosResumen.resumenFinal.toFixed(2)}`, 14, y);
@@ -155,3 +163,20 @@ document.getElementById("borrarHistorialFacturacion").addEventListener("click", 
     // renderizarFacturas();
   }
 });
+
+
+function mostrarGanancias() {
+  const ganancias = JSON.parse(localStorage.getItem("ganancias")) || [];
+  let total = 0;
+
+  ganancias.forEach(g => {
+    total += parseFloat(g.ganancia || 0);
+  });
+
+  document.getElementById("totalGanancias").textContent = `$${total.toFixed(2)}`;
+}
+
+const ganancias = JSON.parse(localStorage.getItem("ganancias")) || [];
+const totalGanancias = ganancias.reduce((acc, g) => acc + g.ganancia, 0);
+
+document.getElementById("gananciasValor").textContent = `$${totalGanancias.toFixed(2)}`;

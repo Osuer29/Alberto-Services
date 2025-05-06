@@ -34,7 +34,7 @@ function renderizarInventario(data = inventario) {
       <td>${item.precioMayor || '-'}</td>
       <td>${item.imei || '-'}</td>
       <td>${item.descripcion || '-'}</td>
-      <td>${item.stock || 0}</td> <!-- Mostrar stock -->
+      <td>${item.stock || 0}</td>
       <td>
         <button onclick="editarArticulo(${index})">✏️</button>
         <button onclick="eliminarArticulo(${index})">🗑️</button>
@@ -42,6 +42,12 @@ function renderizarInventario(data = inventario) {
     `;
     tabla.appendChild(fila);
   });
+
+  // Mostrar total (opcional si usas <p id="totalArticulos"></p> en el HTML)
+  const totalEl = document.getElementById('totalArticulos');
+  if (totalEl) {
+    totalEl.textContent = `Total artículos: ${data.length}`;
+  }
 }
 
 function agregarArticulo(e) {
@@ -56,26 +62,27 @@ function agregarArticulo(e) {
     marca: formulario['marca'].value.trim(),
     imei: formulario['imei'].value.trim(),
     descripcion: formulario['descripcion'].value.trim(),
-    stock: parseInt(formulario['stock'].value.trim()) || 0 // Obtener stock
+    stock: parseInt(formulario['stock'].value.trim()) || 0
   };
 
-  if (!nuevo.nombre || !nuevo.costo || !nuevo.precio || !nuevo.stock) {
-    alert('Nombre, Costo, Precio y Stock son obligatorios.');
+  if (!nuevo.nombre || !nuevo.costo || !nuevo.precio || nuevo.stock < 0) {
+    alert('Nombre, Costo y Precio son obligatorios. El stock no puede ser negativo.');
     return;
   }
 
-  if (nuevo.imei) {
-    // Si tiene IMEI, buscar si ya existe en el inventario
-    const existingIndex = inventario.findIndex(item => item.imei === nuevo.imei);
-    if (existingIndex !== -1) {
-      // Si el IMEI ya existe, solo aumentamos el stock
-      inventario[existingIndex].stock += nuevo.stock;
-    } else {
-      // Si no existe el IMEI, agregamos el nuevo artículo
-      inventario.push(nuevo);
-    }
+  if (editIndex !== null) {
+    inventario[editIndex] = nuevo;
   } else {
-    // Si no es un teléfono (sin IMEI), agregamos como artículo normal
+    if (nuevo.imei) {
+      const existingIndex = inventario.findIndex(item => item.imei === nuevo.imei);
+      if (existingIndex !== -1) {
+        inventario[existingIndex].stock += nuevo.stock;
+        guardarInventario();
+        limpiarFormulario();
+        renderizarInventario();
+        return;
+      }
+    }
     inventario.push(nuevo);
   }
 
@@ -102,7 +109,7 @@ function editarArticulo(index) {
   formulario['marca'].value = item.marca || '';
   formulario['imei'].value = item.imei || '';
   formulario['descripcion'].value = item.descripcion || '';
-  formulario['stock'].value = item.stock || ''; // Cargar stock en el formulario
+  formulario['stock'].value = item.stock || '';
   formulario['btnGuardar'].textContent = 'Actualizar';
   editIndex = index;
 }
@@ -113,29 +120,9 @@ function buscarInventario() {
     item.nombre.toLowerCase().includes(texto) ||
     item.marca?.toLowerCase().includes(texto) ||
     item.modelo?.toLowerCase().includes(texto) ||
-    item.imei?.toLowerCase().includes(texto) // Buscar por IMEI también
+    item.imei?.toLowerCase().includes(texto)
   );
   renderizarInventario(resultado);
-}
-
-// NUEVO: Función para actualizar el stock después de una factura
-function actualizarStockProducto(nombreProducto, cantidadVendida, imei = null) {
-  let producto = inventario.find(item => item.nombre === nombreProducto);
-
-  if (!producto && imei) {
-    // Si no se encontró por nombre, buscar por IMEI
-    producto = inventario.find(item => item.imei === imei);
-  }
-
-  if (producto) {
-    // Reducir la cantidad del producto
-    producto.stock -= cantidadVendida;
-    if (producto.stock < 0) producto.stock = 0; // Asegurarse de que no haya stock negativo
-    guardarInventario();
-    renderizarInventario();  // Volver a renderizar el inventario
-  } else {
-    alert('Producto no encontrado.');
-  }
 }
 
 // ===================== EVENTOS =====================

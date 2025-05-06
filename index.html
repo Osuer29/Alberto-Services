@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+    <script>
+        // Validación rápida antes de cargar el contenido
+        const sesionActiva = localStorage.getItem('usuarioAutenticado');
+        if (!sesionActiva) {
+          window.location.href = 'login.html';
+        }
+      </script>
+      
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0f172a">
@@ -8,12 +18,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
 
 
+
     <title>Inicio - Sistema de Tienda de Celulares</title>
     <link rel="stylesheet" href="inicio.css">
-    <link rel="stylesheet" href="inventario.html">
     <link rel="icon" href="logo.png">
     <link rel="icon" href="icono.png" type="image/png">
     <link rel="manifest" href="manifest.json">
+
 
 </head>
 <body>
@@ -61,6 +72,15 @@
         </ul>
     </section>
     <script src="inicio.js"></script>
+
+    <script src="auth.js"></script>
+<script>
+    validarSesionActiva();
+    controlarModulosPorRol();
+
+    // Activar cierre de sesión
+    document.querySelector('.logout').addEventListener('click', cerrarSesion);
+</script>
 
 </body>
 </html>
